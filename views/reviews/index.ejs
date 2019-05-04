@@ -1,0 +1,94 @@
+<% include ../partials/header %>
+<div id="bannerImgContainer">
+    <img class="bannerImg" src="<%= destination.image %>" alt="">
+    <div class="destinationName">
+        <h1><%= destination.name %></h1>
+    </div>
+    <div >
+            <div class="author">
+                    <a href="/users/<%= destination.author.id %>">
+                        <div class="headshot">
+                            <img src="<%= destination.author.headshot %>" alt="">
+                        </div>
+                        <%= destination.author.username %>
+                    </a>
+                    <p><%= moment(destination.createdAt).fromNow() %></p>
+                </div>
+            <a class="btn pull-right goBack" href="/destinations/<%= destination._id %>"> Go
+                back</a>
+        </div>
+    <div id="bannerFade"></div>
+</div>
+<div class="container reviewPageContainer">
+    <p class="reviewPageAvgRating">
+            <% if (destination.rating === 0) { %>
+                <h2 class="noReviews"><em>No reviews yet.</em></h2>
+                <% } else { %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star <% if (destination.rating > 1.5) { %> checked <% } %>"></span>
+        <span class="fa fa-star <% if (destination.rating > 2.5) { %> checked <% } %>"></span>
+        <span class="fa fa-star <% if (destination.rating > 3.5) { %> checked <% } %>"></span>
+        <span class="fa fa-star <% if (destination.rating > 4.5) { %> checked <% } %>"></span>
+        <span id="averageRating"><%= destination.rating.toFixed(2) %></span>
+        <% } %>
+    </p>
+    <div class="reviewContainer">
+
+            <div class="reviewHeader">
+
+                <h3>All Reviews<span id="numReviews"> (<%= destination.reviews.length %>)</span></h4>
+
+                    <div class="seeAllAndNew">
+
+                        <a class="btn <% if (currentUser && destination.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>"
+                            href="/destinations/<%= destination._id %>/reviews/new">
+                            Write a New Review</a>
+                    </div>
+            </div>
+        <div class="caption-full">
+
+            <% destination.reviews.forEach(function(review){ %>
+            <div class="reviewList">
+                <div class="row">
+                    <div class="review">
+                        <div class="reviewContainer1">
+                            <div class="reviewAuthor">
+                                <div class="headshot">
+                                    <img src="<%= review.author.headshot %>" alt="">
+                                </div>
+                                <p><%= review.author.username %></p>
+                            </div>
+                            <div class="pull-right rating">
+                                <%- '<span class="fa fa-star checked "></span>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
+                            </div>
+
+                        </div>
+                        <div class="reviewContent">
+                            <p style="text-align: justify; word-wrap: break-word;" wrap="hard">
+                                <%= review.text %>
+                            </p>
+                            <div class="reviewFooter">
+                                <span><em><%= review.updatedAt.toDateString() %></em></span>
+                                <div class="reviewBtns pull-right">
+                                        <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+                                        <a class="btn btn-s edit"
+                                            href="/destinations/<%=destination._id %>/reviews/<%=review._id %>/edit"><i class="fas fa-pen"></i></a>
+                                        <form id="delete-form"
+                                            action="/destinations/<%=destination._id %>/reviews/<%=review._id %>?_method=DELETE"
+                                            method="POST">
+                                            <button class="btn btn-s delete"><i class='fas fa-trash-alt'></i></button>  
+                                        </form>
+                                        <% } %>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+
+    </div>
+</div>
+
+<% include ../partials/footer %>

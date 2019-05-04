@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+<div class="formContainer">
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Add New Comment to <%= destination.name %></h1>
+        <div class="form">
+        <form action="/destinations/<%= destination._id %>/comments" method="POST">
+            <div class="form-group">
+                <textarea class="form-control" type="text" name="comment[text]" placeholder="text"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-lg btn-block formBtn">Submit</button>
+            </div>
+        </form>
+        <a href="/destinations">Back</a>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<% include ../partials/footer %>

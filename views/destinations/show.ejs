@@ -1,0 +1,215 @@
+<% include ../partials/header %>
+<div id="bannerImgContainer">
+    <img class="bannerImg" src="<%= destination.image %>" alt="">
+    <div class="destinationName">
+        <h1><%= destination.name %></h1>
+    </div>
+    <div class="author">
+        <a href="/users/<%= destination.author.id %>">
+            <div class="headshot">
+                <img src="<%= destination.author.headshot %>" alt="">
+            </div>
+            <%= destination.author.username %>
+        </a>
+        <p><%= moment(destination.createdAt).fromNow() %></p>
+    </div>
+    <% if(currentUser && destination.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+    <div class="adminBtns">
+        <a class="btn destBtn edit" href="/destinations/<%= destination._id %>/edit"><i class="fas fa-pen"></i></a>
+        <form class="deleteBtn" action="/destinations/<%= destination._id %>?_method=DELETE" method="POST">
+            <button class="btn destBtn delete"><i class="fas fa-trash-alt"></i></button>
+        </form>
+    </div>
+    <% } %>
+    <div id="bannerFade"></div>
+</div>
+<div class="showContainer">
+    <div class="row" id="destinationShowPage">
+        <div id="mainSection">
+
+            <div class="container">
+                <div class="caption-full">
+                    <div class="topContainer">
+                        <div class="leftSection col-md-4">
+
+                            <% if (destination.rating === 0) { %>
+                            
+                                <h4><em>No reviews yet.</em></h4>
+                                <% } else { %>
+                            <p>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star <% if (destination.rating > 1.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (destination.rating > 2.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (destination.rating > 3.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (destination.rating > 4.5) { %> checked <% } %>"></span>
+                                <span id="averageRating"><%= destination.rating.toFixed(2) %></span>
+                                <span id="numReviews">Reviews: <%= destination.reviews.length %></span>
+                            </p>
+                            <% } %>
+
+                            <div id="map"></div>
+                        </div>
+                        <div class="rightSection col-md-8">
+
+                            <h3>Summary</h3>
+                            <p><%= destination.description %></p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--Review section-->
+                <div class="reviewContainer">
+
+                    <div class="reviewHeader">
+
+                        <h3>Latest Reviews</h4>
+
+                            <div class="seeAllAndNew">
+                                <h4><a href="/destinations/<%= destination._id %>/reviews"></i> See all reviews</a>
+                                </h4>
+                                <a class="btn <% if (currentUser && destination.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>"
+                                    href="/destinations/<%= destination._id %>/reviews/new">
+                                    Write a New Review</a>
+                            </div>
+                    </div>
+                    <div class="caption-full">
+                            <% if(destination.reviews.length === 0){ %>
+                                <h4>There are no reviews</h4>
+                            <% } else { %>
+                        <% destination.reviews.slice(0, 5).forEach(function(review){ %>
+                        <div class="reviewList">
+                            <div class="row">
+                                <div class="review">
+                                    <div class="reviewContainer1">
+                                        <div class="reviewAuthor">
+                                            <div class="headshot">
+                                                <img src="<%= review.author.headshot %>" alt="">
+                                            </div>
+                                            <a href="/users/<%= destination.author.id %>">
+                                                <p><%= review.author.username %></p>
+                                            </a>
+                                        </div>
+                                        <div class="pull-right rating">
+                                            <%- '<span class="fa fa-star checked "></span>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
+                                        </div>
+
+                                    </div>
+                                    <div class="reviewContent">
+                                        <p style="text-align: justify">
+                                            <%= review.text %>
+                                        </p>
+                                        <div class="reviewFooter">
+                                            <span><em><%= review.updatedAt.toDateString() %></em></span>
+                                            <div class="reviewBtns pull-right">
+                                                <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+                                                <a class="btn btn-s edit"
+                                                    href="/destinations/<%=destination._id %>/reviews/<%=review._id %>/edit"><i class="fas fa-pen"></i></a>
+                                                <form id="delete-form"
+                                                    action="/destinations/<%=destination._id %>/reviews/<%=review._id %>?_method=DELETE"
+                                                    method="POST">
+                                                    <button class="btn btn-s delete"><i class='fas fa-trash-alt'></i></button>  
+                                                </form>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                        <% } %>
+                    </div>
+                </div>
+
+                <div class="commentContainer">
+
+                    <div class="commentHeader">
+
+                        <h3>Comments</h4>
+
+                            <div class="seeAllAndNew">
+                                <a class="btn addBtn"
+                                    href="/destinations/<%= destination._id %>/comments/new">Add
+                                    New
+                                    Comment</a>
+                            </div>
+                    </div>
+
+                    <div class="well">
+
+                        <% if(destination.comments.length === 0){ %>
+                            <h4>There are no comments</h4>
+                        <% } else { %>
+                        <% destination.comments.forEach(function(comment){ %>
+                        <div class="row">
+                            <div class="col-md-12 comment">
+                                <div class="commentContainer1">
+                                    <div class="commentAuthor">
+                                        <div class="headshot">
+                                            <img src="<%= comment.author.headshot %>" alt="">
+                                        </div>
+                                        <p><%= comment.author.username %></p>
+                                    </div>
+                                    <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
+                                </div>
+
+                                <p><%= comment.text %></p>
+                                <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                                <div class="commentBtns">
+                                    <a href="/destinations/<%= destination._id %>/comments/<%= comment._id %>/edit"
+                                        class="btn btn-sm edit"><i class="fas fa-pen"></i></a>
+                                    <form class="deleteBtn"
+                                        action="/destinations/<%= destination._id %>/comments/<%= comment._id %>?_method=DELETE"
+                                        method="POST">
+                                        <button class="btn btn-sm delete"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+
+                                </div>
+                                <% } %>
+                                <hr>
+                            </div>
+                        </div>
+                        <% }) %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function initMap() {
+            var lat = <%= destination.lat %> ;
+            var lng = <%= destination.lng %> ;
+            var center = {
+                lat: lat,
+                lng: lng
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: center,
+                scrollwheel: false
+            });
+            var contentString = `
+            <strong><%= destination.name %><br />
+            <%= destination.location %></strong>
+            <p><%= destination.description %></p>
+          `
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            var marker = new google.maps.Marker({
+                position: center,
+                map: map
+            });
+            marker.addListener('click', function () {
+                infowindow.open(map, marker);
+            });
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH5pngplRT2HYMsjWawXHQ5X8xFITMkIY&callback=initMap">
+    </script>
+
+    <% include ../partials/footer %>

@@ -1,0 +1,61 @@
+<% include ../partials/header %>
+
+<div class="row profileContainer">
+    <div>
+
+        <div class="thumbnail profileThumbnail">
+            
+            <div class="userProfileImage">
+                <img src="<%= user.headshot %>" alt="user profile image">
+            </div>
+            
+            <div class="caption">
+                <h1><%= user.firstName %> <%= user.lastName %></h1>
+                <a href="mailto:<%=user.email%>"><%= user.email %></a>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <h3><%= user.firstName %>'s Destinations</h3>
+    <div class="row text-center destinationList">
+            
+        <div class="col-12">
+            <% if(destinations.length === 0) { %>
+            <p>No Destinations</p>
+            <% } %>
+        </div>
+        <% destinations.forEach(function(destination){ %>
+        <div class="col-lg-3 col-md-4 col-sm-6 destinationContainer">
+            <div class="thumbnail">
+                <div class="thumbnailImgDiv">
+                    <img class="thumbnailImg" src="<%= destination.image %>" class="card-img-top" alt="...">
+                </div>
+
+                <div class="caption">
+                    <a href="/destinations/<%= destination._id %>"><%= destination.name %></a>
+                    <div>
+                        <p class="destinationInfo"><%= destination.description.substring(0, 80)%>...</p>
+                        <% if (destination.rating === 0) { %>
+                        <em>No reviews yet.</em>
+                        <% } else { %>
+                        <div id="thumbnailRatingContainer">
+                            <div id="stars">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star <% if (destination.rating > 1.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (destination.rating > 2.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (destination.rating > 3.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (destination.rating > 4.5) { %> checked <% } %>"></span>
+                            </div>
+                            <p id="avgRating"><%= destination.rating.toFixed(2) %></p>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+
+    <% include ../partials/footer %>

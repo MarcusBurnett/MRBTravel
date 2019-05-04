@@ -1,0 +1,1872 @@
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+p {
+    white-space: pre-wrap;
+}
+
+textarea {
+    white-space: pre-wrap;
+}
+
+.destBtn {
+    width: 40px;
+    height: 40px;
+    margin: 4px;
+    margin-top: 0;
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.39);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    transition: all 0.5s;   
+}
+
+
+
+.destBtn:hover {
+    color: white;
+    transform: scale(1.1)
+}
+
+.btn.delete {
+    background: rgb(73, 73, 73)
+}
+
+.btn.edit {
+    background: #E36F2D;
+}
+
+.navContainer {
+    width: 100vw;
+    margin: 0 1vw;
+}
+
+.formContainer {
+    margin-top: 80px;
+}
+
+#noDest {
+    margin: 60px auto;
+    text-align: center;
+    font-family: 'HP Simplified', sans-serif;
+    font-weight: 100;
+    color: #121046;
+    opacity: 0;
+    animation: fadeIn 2s 3s forwards;
+
+}
+
+.leftSection {
+    opacity: 0;
+    animation: fadeIn 2s 1s forwards;
+}
+
+.rightSection {
+    opacity: 0;
+    animation: fadeIn 2s 1s forwards;
+
+}
+
+.search-box {
+    background: white;
+    color: #121046;
+    height: 40px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    font-weight: 100;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.39);
+    outline: none;
+}
+
+.review .row {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#searchForm {
+    opacity: 0;
+    animation: fadeIn 2s 3.5s forwards
+}
+
+.sizeForm {
+    width: 30%;
+    margin: 25px auto;
+}
+
+.btn-primary {
+    background: #E36F2D;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.39);
+}
+
+.navbarLogo {
+    width: 120px;
+    height: 30px;
+    background-image: url(../imgs/Logo.svg);
+    background-size: cover;
+    background-position: center;
+    float: left;
+}
+
+.search-box:hover>.search-txt {
+    width: 200px;
+    padding: 0 20px;
+    font-weight: 100;
+    color: #121046;
+    opacity: 1;
+    border-radius: 50%;
+    background: white;
+}
+
+
+.search-box:hover>.search-btn {
+    background: #121046;
+    color: white;
+}
+
+.search-btn {
+    color: white;
+    float: right;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #E36F2D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.search-btn>i {
+    font-size: 20px;
+}
+
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    margin-left: 0;
+    color: #ffffff00;
+    font-size: 16px;
+    font-weight: 100;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+    opacity: 0;
+}
+
+.navbar-header p {
+    margin-bottom: 0;
+    /* margin-top: 2vh; */
+    width: auto;
+}
+
+.navbar {
+    position: fixed;
+    margin: 0;
+    padding-top: 3vh;
+    padding-bottom: 1vh;
+    width: 100vw;
+    top: 0;
+    border: none;
+    z-index: 10;
+    background: none;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+}
+
+.destinationName {
+    position: absolute;
+    z-index: 10;
+    padding: 9px 20px;
+    min-width: 200px;
+    background: #E36F2D;
+    color: white;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    animation: fadeIn 2s 1s forwards;
+
+}
+
+.destinationName h1 {
+    margin: 0;
+    font-family: 'HP Simplified', sans-serif;
+
+}
+
+.navbarDark {
+    position: fixed;
+    margin: 0;
+    padding-top: 3vh;
+    padding-bottom: 6vh;
+    width: 100vw;
+    top: 0;
+    border: none;
+    z-index: 10;
+    background: none;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pagination {
+    animation: fadeIn 2s 1s forwards;
+    opacity: 0;
+}
+
+.thumbnail.reviewThumbnail {
+    padding: 20px;
+    margin-top: 50px;
+    width: 95vw;
+}
+
+.reviewPageContainer {
+    width: 100vw;
+    background: white;
+    padding-top: 20px;
+    font-family: 'HP Simplified', sans-serif;
+    color: #121046;
+}
+
+.jumbotron {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-image: url(../imgs/background@2x.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.authorHeadshot {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    bottom: 173px;
+    right: 20px;
+    border-radius: 50%;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authorHeadshot img {
+    min-height: 100%;
+    max-height: 101%;
+}
+
+.bannerImg {
+    position: fixed;
+    z-index: -1;
+    min-width: 100%;
+    min-height: 100%;
+    max-height: 102%;
+    width: auto;
+    height: auto;
+    left: 0;
+    opacity: 0;
+    animation: fadeIn 2s  forwards;
+
+}
+
+#bannerImgContainer {
+    width: 100vw;
+    height: 70vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.thumbnail {
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: none;
+    opacity: 0;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    transition: all 5s;
+    animation: fadeIn 2s 1s forwards;
+}
+
+.fadeIn {
+    animation: fadeIn 1s 1s forwards;
+}
+
+
+.thumbnail .caption {
+    padding: 15px;
+    margin-top: 10px;
+    color: #121046;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    height: 160px;
+    font-family: 'HP Simplified', sans-serif;
+
+}
+
+.caption a {
+    color: #121046;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 2.5rem;
+    margin: 5px 0;
+}
+
+.thumbnail .caption-full {
+    padding: 0.8vw;
+}
+
+.largeImg {
+    min-width: 100%;
+}
+
+.checked {
+    color: #E36F2D !important;
+}
+
+.destinationInfo {
+    height: 40px;
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+
+
+
+
+#avgRating {
+    float: right;
+    margin: 0;
+    margin-left: 10px;
+    font-size: 2rem;
+}
+
+.fa-star {
+    font-size: 2rem;
+    font-weight: 100;
+    width: 22px;
+}
+
+#mainSection .fa-star {
+    font-size: 3rem;
+    width: 35px;
+}
+
+.fa,
+.fas .fa-star {
+    font-weight: 100;
+    color: rgb(187, 187, 187);
+}
+
+.thumbnailImgDiv {
+    overflow: hidden;
+    height: 30vh;
+    max-height: 270px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbnailImg {
+    min-height: 100%;
+    min-width: 100%;
+    max-width: 105%;
+}
+
+.deleteBtn {
+    display: inline;
+}
+
+#whiteBck {
+    width: 100vw;
+    background: white;
+}
+
+.comment {
+    padding: 1vh 3vh;
+}
+
+.comment .pull-right {
+    font-weight: 100;
+    font-size: 1.2rem;
+}
+
+.destinationList {
+    display: flex;
+    flex-wrap: wrap;
+    background: white;
+    padding: 3vh;
+}
+
+.destinationContainer {
+    padding: 7px;
+}
+
+.form {
+    width: 30%;
+    margin: 25px auto;
+}
+
+#map {
+    height: 300px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.reviewPageAvgRating .fa-star {
+    font-size: 4rem;
+    width: 45px;
+}
+
+.reviewPageContainer .reviewContainer {
+    margin-bottom: 20px;
+
+}
+
+.goBack {
+    position: absolute;
+    top: 60vh;
+    right: 1vw;
+    z-index: 9;
+    background: #E36F2D;
+    border: #E36F2D;
+    border-radius: 10px;
+    color: white;
+    padding: 8px 25px;
+    opacity: 0;
+    animation: fadeIn 2s 2s forwards;
+
+}
+
+.reviewPageAvgRating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 2s 2s forwards;
+}
+
+#landing-header {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    width: 100vw;
+    font-family: 'HP Simplified', sans-serif;
+}
+
+#landing-header h1 {
+    color: #121046;
+    margin: 0;
+    font-size: 4rem;
+    font-weight: 100;
+    opacity: 0;
+    animation: fadeIn 1s 0.5s forwards;
+}
+
+.userProfileImage {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+}
+
+.userProfileImage img {
+    max-height: 100%;
+}
+
+#landing-header p {
+    color: #121046;
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 100;
+    margin-bottom: 10vh;
+    opacity: 0;
+    animation: fadeIn 1s 2.5s forwards;
+}
+
+.profileContainer {
+    margin: 100px 20px 20px 20px;
+}
+
+.profileContainer .destinationList {
+    padding: 1vw;
+}
+
+.profileContainer h3 {
+    font-family: 'HP Simplified', sans-serif;
+    color: #121046;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    opacity: 0;
+    animation: fadeIn 2s 1s forwards;
+}
+
+.profileThumbnail {
+    margin-bottom: 20px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+
+.profileThumbnail .caption {
+    margin-top: 0;
+    margin-left: 20px;
+}
+
+.profileThumbnail .caption a {
+    font-weight: 100;
+    font-size: 2rem;
+}
+
+.profileThumbnail .caption h1 {
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+#logo {
+    height: 11vw;
+    width: 45vw;
+    background-image: url(../imgs/Logo@2x.png);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10vh;
+    margin-top: 3vh;
+    opacity: 0;
+    animation: fadeIn 2s 1.5s forwards;
+}
+
+#signInBtn {
+    background: #E36F2D;
+    color: white;
+    border-radius: 7px;
+    margin-top: 0.2vh;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.39);
+    transition: all 0.5s;
+}
+
+.iconContainer {
+    display: flex;
+    position: absolute;
+    bottom: 173px;
+    right: 20px;
+}
+
+#averageRating {
+    font-family: 'HP Simplified', sans-serif;
+    font-size: 3rem;
+    color: #121046;
+    margin: 0 10px;
+}
+
+.commentContainer {
+    font-family: 'HP Simplified', sans-serif;
+    font-size: 3rem;
+    color: #121046;
+    margin: 20px 15px 70px;
+    opacity: 0;
+    animation: fadeIn 2s 1.5s forwards;
+
+}
+
+#mainSection .commentHeader h3 {
+    margin: 0;
+}
+
+#numReviews {
+    font-weight: 100;
+    font-family: 'HP Simplified', sans-serif;
+    color: #121046;
+}
+
+#mainSection .container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 3px;
+    transition: all 0.5s;
+}
+
+.icon:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.notFavourite {
+    background: #A0A0A0;
+    font-size: 2.2rem;
+    padding-top: 2px;
+    padding-right: 1px;
+}
+
+.flashMsg {
+    position: fixed;
+    bottom: -10px;
+    left: -10px;
+    width: 32vw;
+    z-index: 10;
+    animation: flashAnimation 2s 3s linear forwards;
+}
+
+.noMatch {
+    font-family: 'HP Simplified', sans-serif;
+    font-weight: 100;
+    font-size: 1.7rem;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+    color: white;
+    background: none;
+    outline: none;
+}
+
+.isFavourite {
+    background: #E00D30;
+    font-size: 2.2rem;
+    padding-top: 2px;
+    padding-right: 1px;
+}
+
+.shareBtn {
+    background: #E36F2D;
+    font-size: 1.8rem;
+    padding-bottom: 1px;
+    padding-right: 3px;
+}
+
+.headshot {
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    border: 0.2px solid rgb(182, 182, 182);
+
+}
+
+.headshot img {
+    max-height: 100%;
+}
+
+.author a    {
+    display: flex;
+    align-items: center;
+    color: #121046;
+    font-size: 1.7rem;
+    margin-right: 10px;
+}
+
+.adminBtns {
+    position: absolute;
+    display: flex;
+
+    top: 60vh;
+    right: 2vw;
+    z-index: 9;
+    opacity: 0;
+    animation: fadeIn 2s 2s forwards;
+
+}
+
+.author p {
+    margin: 0;
+    margin-top: 4px;
+    font-weight: 100;
+}
+
+.author .headshot {
+    margin-right: 10px;
+}
+
+#signUpBtn {
+    color: #121046;
+    font-weight: 400;
+    margin-top: 0.2vh;
+}
+
+#signInBtn:hover {
+    transform: scale(1.05)
+}
+
+#signedInAs {
+    color: #121046;
+    font-weight: 400;
+    margin-top: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    display: flex;
+    align-items: center;
+}
+
+#logoutBtn {
+    color: #121046;
+    font-size: 1.5rem;
+    margin-top: 0;
+    padding-left: 0;
+    padding-bottom: 5px;
+    transition: all 0.5s;
+}
+
+#addDestination {
+    background: #E36F2D;
+    color: white;
+    border-radius: 7px;
+    border: none;
+    font-family: 'HP Simplified', sans-serif;
+    font-weight: 100;
+    font-size: 1.7rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.5s;
+}
+
+#addDestination:hover {
+    transform: scale(1.05)
+}
+
+.navbar-default .navbar-nav>li>a {
+    font-family: 'HP Simplified', sans-serif;
+    font-weight: 100;
+    font-size: 1.7rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.slideshow {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.slideshow li {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: -1;
+    animation: imageAnimation 35s linear infinite;
+}
+
+.slideshow li:nth-child(1) {
+    background-image: url(../imgs/IMAG0378\ 1.jpg)
+}
+
+.slideshow li:nth-child(2) {
+    background-image: url(../imgs/20180424_180327.jpg);
+    animation-delay: 7s;
+}
+
+.slideshow li:nth-child(3) {
+    background-image: url(../imgs/IMAG0438.jpg);
+    animation-delay: 14s;
+}
+
+.slideshow li:nth-child(4) {
+    background-image: url(../imgs/20181116_161356.jpg);
+    animation-delay: 21s;
+}
+
+.slideshow li:nth-child(5) {
+    background-image: url(../imgs/IMAG0591.jpg);
+    animation-delay: 28s;
+}
+
+#lightBackground {
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 0;
+    height: 110vh;
+    width: 100vw;
+    z-index: 0;
+}
+
+#fade {
+    width: 100vw;
+    height: 10vh;
+    margin-top: 100vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), white);
+    position: absolute;
+}
+
+#bannerFade {
+    width: 100vw;
+    height: 20vh;
+    margin-top: 25.1vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), white);
+    position: absolute;
+}
+
+#mainSection {
+    background: white;
+    color: #121046;
+    padding-top: 8vh;
+    font-family: 'HP Simplified', sans-serif;
+}
+
+.reviewContent p {
+    white-space: pre-line;
+}
+
+#mainSection p {
+    font-weight: 100;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    white-space: pre-wrap;
+}
+
+#mainSection .leftSection p {
+    white-space: initial;
+}
+
+#mainSection h3 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-family: 'HP Simplified', sans-serif;
+}
+
+
+.reviewAuthor {
+    display: flex;
+    align-items: center;
+}
+
+.reviewAuthor .headshot {
+    width: 35px;
+    height: 35px;
+    margin-left: 0;
+    border: 0.5px solid rgb(182, 182, 182);
+}
+
+.commentAuthor {
+    display: flex;
+    align-items: center;
+}
+
+.commentAuthor .headshot {
+    width: 35px;
+    height: 35px;
+    margin-left: 0;
+    border: 0.5px solid rgb(182, 182, 182);
+}
+
+.commentAuthor p {
+    margin-left: 10px;
+    font-size: 1.5rem;
+}
+
+.seeAllAndNew h4 {
+    margin: 0;
+    margin-right: 20px;
+    font-size: 1.7rem;
+}
+
+.seeAllAndNew h4 a {
+    color: #121046;
+}
+
+.seeAllAndNew .btn {
+    padding: 8px 15px;
+    background: #E36F2D;
+    border: #E36F2D;
+    border-radius: 5px;
+}
+
+.reviewHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.commentHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#mainSection .comment p {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+#mainSection .reviewHeader h3 {
+    margin: 0;
+}
+
+.seeAllAndNew {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 5px;
+}
+
+.reviewAuthor p {
+    margin-left: 10px;
+    font-size: 1.5rem;
+}
+
+.well {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.39);
+    border-radius: 10px;
+    padding: 20px;
+
+    overflow: hidden;
+    border: none;
+    opacity: 0;
+    margin-top: 20px;
+    transition: all 5s;
+    animation: fadeIn 3s forwards;
+}
+
+
+
+.footer {
+    background: white;
+}
+
+#thumbnailRatingContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#mainSection .reviewContainer1 a {
+    color: #121046;
+}
+
+.reviewContainer {
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: none;
+    opacity: 0;
+    margin-top: 40px;
+    transition: all 5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 2s 1s forwards;
+    margin: 40px 15px;
+}
+
+.noReviews {
+    text-align: center;
+}
+
+.review {
+    margin: 10px 2px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.39);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.review .row {
+    margin: 0;
+}
+
+.currentDestRating {
+    margin-bottom: 30px;
+}
+
+#mainSection .review .fa-star {
+    font-size: 2rem;
+    width: 25px;
+}
+
+.reviewList {
+    margin: 15px;
+}
+
+.reviewContainer1 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.commentContainer1 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.reviewBtns {
+    display: flex;
+    color: white;
+}
+
+.reviewBtns a:hover {
+    color: white;
+    transform: scale(1.1)
+}
+
+.reviewBtns button:hover {
+    color: white;
+    transform: scale(1.1)
+}
+
+.reviewBtns a {
+    margin-right: 5px;
+    color: white;
+    text-decoration: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+
+}
+
+.reviewBtns button {
+    margin-right: 5px;
+    color: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    transition: all 0.5s;
+}
+
+.btn {
+    transition: all 0.5s;
+    background: #E36F2D;
+    color: white;
+}
+
+a.btn {
+    color: white!important;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    color: white;
+}
+
+.commentBtns {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.commentBtns .deleteBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.commentBtns a:hover {
+    color: white;
+}
+
+.commentBtns a {
+    margin-right: 5px;
+    color: white;
+    text-decoration: none;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.commentBtns button {
+    margin-right: 5px;
+    color: white;
+    text-decoration: none;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.reviewContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reviewFooter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+#mainSection .review .reviewContent p {
+    margin-bottom: 10px;
+    white-space: pre-line;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #E36F2D;
+    border-color: #E36F2D;
+}
+
+.author {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 60vh;
+    left: 1vw;
+    z-index: 9;
+    font-family: "HP Simplified", sans-serif;
+    opacity: 0;
+    animation: fadeIn 2s 1s forwards;
+
+
+}
+
+#mainSection .review p {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.review em {
+    font-weight: 100;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: #e7e7e700;
+}
+
+.navbar-collapse {
+    border-top: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.caption-full {
+    width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+    .search-txt {
+        width: 20vw;
+        opacity: 1;
+        margin-left: 5vw;
+    }
+
+    #mainSection p {
+        text-align: center;
+    }
+
+    #fade {
+        margin-top: 100.5vh;
+    }
+
+    #map {
+        margin: 30px auto;
+    }
+
+    .rightSection {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    #mainSection .review p {
+        font-size: 2rem;
+    }
+
+    #mainSection .commentAuthor p {
+        font-size: 2rem;
+    }
+
+
+    .form {
+        width: 90vw;
+        margin: 0 auto;
+        margin-top: 10vh;
+        margin-bottom: 5vh;
+    }
+
+
+    .reviewBtns a {
+        height: 60px;
+        width: 60px;
+        font-size: 2rem;
+    }
+
+    .reviewBtns button {
+        height: 60px;
+        width: 60px;
+        font-size: 2rem;
+    }
+
+    .reviewBtns {
+        width: 100%;
+        justify-content: space-between;
+        margin: 20px;
+    }
+
+    .commentBtns button {
+        height: 60px;
+        width: 60px;
+        font-size: 2rem;
+    }
+
+    .commentBtns a {
+        height: 60px;
+        width: 60px;
+        font-size: 2rem;
+    }
+
+
+
+    .pull-right.author {
+        margin-bottom: 20px;
+    }
+
+    .reviewContainer {
+        margin: 50px 0 0 0;
+    }
+
+    .commentContainer {
+        margin: 20px 0 0 0;
+    }
+
+    .reviewHeader {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    .commentHeader {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    .seeAllAndNew {
+        flex-direction: column;
+        margin: 20px 0 0 0;
+        width: 100%;
+    }
+
+    #mainSection .commentAuthor p {
+        margin: 0 0 0 10px;
+    }
+
+    .seeAllAndNew h4 {
+        font-size: 2rem;
+        margin: 20px 0;
+        order: 2;
+    }
+
+    .seeAllAndNew .btn {
+        width: 100%;
+        padding: 15px;
+        font-size: 2rem;
+        margin: 10px 0;
+        order: 1;
+    }
+
+    .form.newForm {
+        margin-top: 3vh;
+    }
+
+    .reviewContainer .caption-full {
+        width: 100%;
+    }
+
+    .formContainer.newForm h1 {
+        margin-top: 2vh;
+    }
+
+    .form-group {
+        margin-bottom: 3vh;
+    }
+
+    .formContainer h1 {
+        margin-top: 5vh
+    }
+
+    .form-control {
+        height: 6vh;
+    }
+
+    .destinationList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .formBtn {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        margin: 0;
+        border-radius: 0;
+        height: 15vw;
+        font-size: 2rem;
+    }
+
+    .formContainer {
+        margin-bottom: 10vh;
+        overflow: hidden;
+    }
+
+    #bannerFade {
+        margin-top: 25.1vh;
+    }
+
+    .userProfileImage {
+        width: 150px;
+    }
+
+    .profileThumbnail.thumbnail {
+        width: auto;
+    }
+
+    .profileThumbnail.thumbnail .caption {
+        height: auto;
+    }
+
+    .profileContainer h3 {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 5px;
+    }
+
+    .profileThumbnail {
+        flex-direction: column;
+    }
+
+    .thumbnail {
+        width: 92vw;
+
+    }
+
+    .thumbnailImgDiv {
+        height: 32vh;
+    }
+
+    .thumbnail .caption-full {
+        padding: 3vw;
+    }
+
+    .well {
+        padding: 0;
+    }
+
+    .comment {
+        padding-top: 5vw;
+        padding-left: 7vw;
+        padding-right: 7vw;
+    }
+
+    .well p {
+        margin: 2vh 2vw;
+    }
+
+    .reviewFooter {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .reviewFooter span {
+        align-self: flex-start;
+        margin: 10px 0;
+    }
+
+    .commentBtns input {
+        margin: 0;
+        height: 70px;
+        width: 100%;
+        font-size: 1.8rem;
+    }
+
+    .commentBtns {
+        margin: 20px;
+        justify-content: space-between;
+        width: auto;
+
+    }
+
+    .btn-sm {
+        padding: 20px;
+    }
+
+
+    .sizeForm {
+        width: 90%;
+        margin-top: 50px;
+    }
+
+    textarea.form-control {
+        height: 40vh;
+    }
+
+    .flashMsg {
+        display: none;
+    }
+
+    .well .addBtn {
+        width: 100%;
+        border-radius: 0;
+        height: 10vw;
+        padding: 2.2vw;
+        border: none;
+        margin-bottom: 1vh;
+    }
+
+    hr {
+        margin: 0;
+        border: none;
+    }
+
+    .well strong {
+        font-size: 2rem;
+    }
+
+    .well .pull-right {
+        margin-top: 1vw;
+    }
+
+    .deleteButton,
+    .editButton {
+        width: 80vw;
+        margin: 1vh;
+        height: 6vh;
+        max-height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .thumbnail {
+        margin-top: 2vh;
+    }
+
+    #destinationShowPage {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #sideBar {
+        order: 2;
+    }
+
+    #mainSection {
+        order: 1;
+    }
+
+    .lead {
+        display: none;
+    }
+
+
+    #landing-header h1 {
+        font-size: 4rem;
+        line-height: 6rem;
+        margin-top: 0;
+    }
+
+    #allBtn {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 15vw;
+        border-radius: 0;
+    }
+
+    #logo {
+        height: 20vw;
+        width: 80vw;
+        background-image: url(../imgs/Logo@2x.png);
+        margin-bottom: 5vh;
+        margin-top: 5vh;
+        opacity: 0;
+        animation: fadeIn 2s 1.5s forwards;
+    }
+
+    .icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .iconContainer {
+        bottom: 163px;
+    }
+
+    .shareBtn {
+        font-size: 2.1rem;
+    }
+
+    .isFavourite {
+        font-size: 2.8rem;
+    }
+
+    .notFavourite {
+        font-size: 2.8rem;
+    }
+
+    .search-txt {
+        width: 60vw;
+        opacity: 1;
+        margin-left: 5vw;
+        font-size: 2rem;
+    }
+
+    .search-box {
+        height: 55px;
+    }
+
+    .search-btn {
+        width: 70px;
+        height: 70px;
+    }
+
+    #landing-header p {
+        margin: 5vw;
+        margin-bottom: 10vh;
+    }
+
+    .navbar-default .navbar-toggle {
+        border: none;
+        margin-right: 20px;
+    }
+
+    .navbar-default .navbar-collapse,
+    .navbar-default .navbar-form {
+        border: none;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: white;
+    }
+
+    .navbarDark {
+        background: #121046;
+        padding: 8px 0;
+        z-index: 11;
+    }
+
+    .navbarLogo {
+        width: 120px;
+        height: 30px;
+        background-image: url(../imgs/logoWhite.png);
+        background-size: cover;
+        background-position: center;
+        margin: 10px 15px;
+    }
+
+    .navbarDark #navbar {
+        margin-top: 20px;
+    }
+
+    .navbar-default .navbar-toggle:focus,
+    .navbar-default .navbar-toggle:hover {
+        background: none;
+    }
+
+    .navbar {
+        background: #121046;
+        padding: 8px 0;
+    }
+
+    #addDestination {
+        background: none;
+        color: white;
+        border-radius: 0;
+        border: none;
+        font-family: 'HP Simplified', sans-serif;
+        font-weight: normal;
+        font-size: 1.7rem;
+        padding: 0;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: none;
+        transition: all 0s;
+    }
+
+    #signInBtn {
+        width: 95vw;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #signUpBtn {
+        color: white;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar-right #li1 {
+        order: 2
+    }
+
+    .navbar-right #li2 {
+        order: 1
+    }
+
+    .navContainer {
+        margin: 0;
+    }
+
+    .destinationList {
+        padding-bottom: 0;
+    }
+
+    .navbar-right {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    #navbar {
+        border: none;
+    }
+
+    .navbar.fadeIn {
+        animation: fadeIn 1s forwards;
+    }
+
+    #signedInAs {
+        color: white;
+        height: 70px;
+        width: 95vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #logoutBtn {
+        color: white;
+        background: #E36F2D;
+        height: 60px;
+        width: 95vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        padding: 0;
+        margin: 10px 0;
+    }
+
+    .destinationName {
+        width: 60vw;
+    }
+
+    #map {
+        margin: 40px auto;
+        width: 100%;
+    }
+
+    .thumbnailImg {
+        min-width: auto;
+        max-width: 130%;
+    }
+
+    #mainSection h3 {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    #mainSection p {
+        text-align: justify;
+    }
+
+    .author {
+        left: auto;
+        top: 62vh;
+    }
+
+    .adminBtns {
+        right: auto;
+        top: 35vh;
+        margin-top: 60px;
+    }
+
+    .adminBtns .btn {
+        width: 60px;
+        height: 60px;
+        margin: 20px;
+        font-size: 2.5rem;
+    }
+
+    .leftSection h4  {
+        text-align: center;
+    }
+
+    .caption-full h4 {
+        margin: 20px 10px 20px 20px;
+    }
+
+    .well h4 {
+        margin: 20px 10px 20px 20px;
+    }
+
+    .reviewContainer1 {
+        flex-direction: column;
+    }
+
+    #mainSection .review .fa-star {
+        font-size: 3rem;
+        width: 35px;
+        margin: 20px 5px 30px 5px;
+    }
+
+    .profileThumbnail .caption {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .profileThumbnail .caption h1 {
+        text-align: center;
+    }
+
+    .reviewAuthor {
+        order: 2;
+    }
+
+    .rating {
+        order: 1;
+    }
+
+}
+
+@keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+        animation-timing-function: ease-in;
+    }
+
+    8% {
+        opacity: 1;
+
+        animation-timing-function: ease-out;
+    }
+
+    28% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 0;
+        transform: scale(1.2);
+
+    }
+}
+
+@keyframes flashAnimation {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}

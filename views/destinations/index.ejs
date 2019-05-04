@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MRB Travel</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default fadeIn">
+        <div class="container navContainer">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar" id="line1"></span>
+                    <span class="icon-bar" id="line2"></span>
+                    <span class="icon-bar" id="line3"></span>
+                </button>
+
+
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <a class="btn btn-large" href="/destinations/new" id="addDestination">Add new
+                    destination</a>
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(!currentUser){ %>
+                    <li id="li1" class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a
+                            href="/login" id="signInBtn">Sign In</a></li>
+                    <li id="li2" class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a
+                            href="/register" id="signUpBtn">Sign Up</a></li>
+                    <% } else { %>
+                    <li id="li3"><a href="/users/<%= currentUser._id %>" id="signedInAs">Signed In As
+                            <%= currentUser.username %>
+                            <div class="headshot">
+                                <img src="<%= currentUser.headshot %>" alt="">
+                            </div>
+                        </a></li>
+                    <li id="li4"><a href="/logout" id="logoutBtn">Logout</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div id="lightBackground">
+        <div id="fade"></div>
+    </div>
+
+
+    <div id="landing-header">
+        <h1>Welcome to</h1>
+        <div id="logo"></div>
+        <p>Your ultimate guide to the best travel destinations around the world</p>
+        
+            <form action="/destinations" method="GET" id="searchForm">
+                <div class="search-box">
+                    <input type="text" name="search" class="search-txt" placeholder="Type to search" />
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        
+    </div>
+
+    <ul class="slideshow">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <div class="row text-center destinationList">
+        <div class="col-12">
+            <% if(noMatch !== undefined) { %>
+            <p class="noMatch"><%= noMatch %></p>
+            <% } %>
+        </div>
+        <% if(destinations.length === 0){ %>
+            <h4 id="noDest">No destinations at the moment...</h4>
+        <% } %>
+        <% destinations.forEach(function(destination){ %>
+        <div class="col-lg-3 col-md-4 col-sm-6 destinationContainer">
+            <div class="thumbnail">
+                <div class="thumbnailImgDiv">
+                    <img class="thumbnailImg" src="<%= destination.image %>" class="card-img-top" alt="...">
+                </div>
+                <a href="/users/<%= destination.author.id %>"><div class="authorHeadshot">
+                    <img class src="<%= destination.author.headshot %>" alt="">
+                </div>
+            </a>
+
+
+                <div class="caption">
+                    <a href="/destinations/<%= destination._id %>"><%= destination.name %></a>
+                    <div>
+                        <p class="destinationInfo"><%= destination.description.substring(0, 80)%>...</p>
+                        <% if (destination.rating === 0) { %>
+                        <em>No reviews yet.</em>
+                        <% } else { %>
+                        <div id="thumbnailRatingContainer">
+                            <div id="stars">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star <% if (destination.rating > 1.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (destination.rating > 2.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (destination.rating > 3.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (destination.rating > 4.5) { %> checked <% } %>"></span>
+                            </div>
+                            <p id="avgRating"><%= destination.rating.toFixed(2) %></p>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+    <div class="row text-center footer">
+        <% if (pages && pages > 0) { %>
+        <ul class="pagination text-center">
+            <% if (current == 1) { %>
+            <li class="disabled"><a>First</a></li>
+            <% } else { %>
+            <li><a href="/destinations">First</a></li>
+            <% } %>
+
+            <% if (current == 1) { %>
+            <li class="disabled"><a>«</a></li>
+            <% } else { %>
+            <li><a href="/destinations?page=<%= Number(current) - 1 %>">«</a></li>
+            <% } %>
+
+            <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+            <% if (i !== 1) { %>
+            <li class="disabled"><a>...</a></li>
+            <% } %>
+            <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            <% if (i == current) { %>
+            <li class="active"><a><%= i %></a></li>
+            <% } else { %>
+            <li><a href="/destinations?page=<%= i %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+            <li class="disabled"><a>...</a></li>
+            <% } %>
+            <% } %>
+
+            <% if (current == pages) { %>
+            <li class="disabled"><a>»</a></li>
+            <% } else { %>
+            <li><a href="/destinations?page=<%= Number(current) + 1 %>">»</a></li>
+            <% } %>
+
+            <% if (current == pages) { %>
+            <li class="disabled"><a>Last</a></li>
+            <% } else { %>
+            <li><a href="/destinations?page=<%= pages %>">Last</a></li>
+            <% } %>
+        </ul>
+        <% } %>
+    </div>
+
+    </div>
+
+    <% include ../partials/footer %>

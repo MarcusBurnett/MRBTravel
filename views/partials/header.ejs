@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MRB Travel</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+
+<body>
+
+    <nav class="navbarDark navbar-default">
+        <div class="container navContainer">
+            <div class="navbar-header">
+                    <a href="/destinations"><div class="navbarLogo"></div></a>
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(!currentUser){ %>
+                    <li id="li1" class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a
+                            href="/login" id="signInBtn">Sign In</a></li>
+                    <li id="li2" class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a
+                            href="/register" id="signUpBtn">Sign Up</a></li>
+                    <% } else { %>
+                    <li id="li3"><a href="/users/<%= currentUser._id %>" id="signedInAs">Signed In As <%= currentUser.username %> 
+                        <div class="headshot">
+                            <img  src="<%= currentUser.headshot %>" alt="">
+                        </div>
+                    </a></li>
+                    <li id="li4"><a href="/logout" id="logoutBtn">Logout</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   

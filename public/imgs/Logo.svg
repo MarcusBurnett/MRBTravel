@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="740" height="185" viewBox="0 0 740 185">
+  <defs>
+    <clipPath id="clip-Logo">
+      <rect width="740" height="185"/>
+    </clipPath>
+  </defs>
+  <g id="Logo" clip-path="url(#clip-Logo)">
+    <rect width="740" height="185" fill="rgba(255,255,255,0)"/>
+    <g id="Group_3" data-name="Group 3" transform="translate(-175 -326.368)">
+      <text id="MRBTrave" transform="translate(503 503.41)" fill="#121046" font-size="159" font-family="HPSimplified-Regular, HP Simplified"><tspan x="-324.36" y="0">MRB</tspan><tspan y="0" fill="#e36f2d" font-family="HPSimplified-Light, HP Simplified" font-weight="300">Trave</tspan></text>
+      <path id="Path_1" data-name="Path 1" d="M74.65,71.969,5.291,46.876s-5.862-1.209-5.246-4.8,7.712-9.567,7.712-9.567a24.877,24.877,0,0,1,10.51-5.279c6.141-1.292,14.056.111,14.056.111l85.042,9.727,32.368-26.319S172.257-9.6,186.237,5.7s-8.075,32.99-8.075,32.99L146.614,65.968l27.647,96.417" transform="translate(727.502 302.368) rotate(16)" fill="none" stroke="#e36f2d" stroke-width="8"/>
+    </g>
+  </g>
+</svg>
